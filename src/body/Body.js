@@ -640,18 +640,12 @@ var Axes = require('../geometry/Axes');
             velocityPrevY = body.position.y - body.positionPrev.y;
 
         // update velocity with Verlet integration
-        body.velocity.x = (velocityPrevX * frictionAir * correction) + (body.force.x / body.mass) * deltaTimeSquared;
-        body.velocity.y = (velocityPrevY * frictionAir * correction) + (body.force.y / body.mass) * deltaTimeSquared;
 
         body.positionPrev.x = body.position.x;
         body.positionPrev.y = body.position.y;
         body.position.x += body.velocity.x;
         body.position.y += body.velocity.y;
-
-        // update angular velocity with Verlet integration
-        body.angularVelocity = ((body.angle - body.anglePrev) * frictionAir * correction) + (body.torque / body.inertia) * deltaTimeSquared;
-        body.anglePrev = body.angle;
-        body.angle += body.angularVelocity;
+        console.log(body.position.x);
 
         // track speed and acceleration
         body.speed = Vector.magnitude(body.velocity);
